@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Harry Potter Adventure - Our 7-Month Journey</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #2A2D34;
+            color: #F0E68C;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        nav {
+            background-color: #7F0909;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #F0E68C;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: #F0E68C;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+
+        .hero {
+            background-color: #1A472A;
+            color: #F0E68C;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .sorting-hat {
+            background-color: #5D5D5D;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #sortingHat {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        #sortingHat:hover {
+            transform: scale(1.1);
+        }
+
+        #houseResult {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .spell-caster {
+            background-color: #5D5D5D;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #spellInput {
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        #castSpell {
+            background-color: #7F0909;
+            color: #F0E68C;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #castSpell:hover {
+            background-color: #5C0606;
+        }
+
+        #spellResult {
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        footer {
+            background-color: #7F0909;
+            color: #F0E68C;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        .spell-list {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #3C3F47;
+            border-radius: 10px;
+            color: #F0E68C;
+        }
+
+        .spell-list ul {
+            list-style-type: none;
+        }
+
+        .spell-list li {
+            margin: 0.5rem 0;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Magical Adventure</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="retro.html">Retro</a>
+                <a href="lego.html">LEGO</a>
+                <a href="cafe.html">Cafe</a>
+                <a href="rom.html">Romantic</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Our Magical Harry Potter Adventure</h1>
+            <p>Experience the magic of Hogwarts and create your own spells!</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="sorting-hat">
+            <h2>Get Sorted into Your Hogwarts House</h2>
+            <img id="sortingHat" src="harryp.png" alt="Sorting Hat">
+            <p>Click the Sorting Hat to find out your house!</p>
+            <div id="houseResult"></div>
+        </section>
+
+        <section class="spell-caster">
+            <h2>Cast Your Own Spell</h2>
+            <input type="text" id="spellInput" placeholder="Enter your spell...">
+            <button id="castSpell">Cast Spell</button>
+            <div id="spellResult"></div>
+        </section>
+
+        <!-- Display the list of available spells -->
+        <section class="spell-list">
+            <h3>List of Spells You Can Cast:</h3>
+            <ul>
+                <li><strong>lumos</strong></li>
+                <li><strong>alohomora</strong></li>
+                <li><strong>expecto patronum</strong></li>
+                <li><strong>wingardium leviosa</strong></li>
+                <li><strong>accio</strong></li>
+                <li><strong>silencio</strong> </li>
+                <li><strong>nox</strong></li>
+                <li><strong>expelliarmus</strong></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Magical Adventure. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const sortingHat = document.getElementById('sortingHat');
+        const houseResult = document.getElementById('houseResult');
+        const spellInput = document.getElementById('spellInput');
+        const castSpell = document.getElementById('castSpell');
+        const spellResult = document.getElementById('spellResult');
+
+        const houses = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
+        const houseColors = {
+            'Gryffindor': '#740001',
+            'Hufflepuff': '#ECB939',
+            'Ravenclaw': '#0E1A40',
+            'Slytherin': '#1A472A'
+        };
+
+        sortingHat.addEventListener('click', () => {
+            const randomHouse = houses[Math.floor(Math.random() * houses.length)];
+            houseResult.textContent = `You belong to ${randomHouse}!`;
+            houseResult.style.color = houseColors[randomHouse];
+        });
+
+        // Romantic spell responses
+        const romanticSpells = {
+            'lumos': 'You light up my world like no one else. 💡',
+            'alohomora': 'You’ve unlocked the door to my heart. 💖',
+            'expecto patronum': 'My love for you is my Patronus, it’ll always protect me. 🦄',
+            'wingardium leviosa': 'You lift me up, higher than I’ve ever been. 💫',
+            'accio': 'You’re the magnet that draws me closer every day. 🧲',
+            'silencio': 'In the silence, all I hear is my heart beating for you. 💓',
+            'nox': 'When the lights go down, your love shines bright. 🌙',
+            'expelliarmus': 'You disarm my heart with every smile. 💘',
+        };
+
+        castSpell.addEventListener('click', () => {
+            const spell = spellInput.value.toLowerCase().trim();
+            if (romanticSpells[spell]) {
+                spellResult.textContent = romanticSpells[spell];
+            } else {
+                spellResult.textContent = 'That spell didn’t work, but my feelings for you are always true! ❤️';
+            }
+        });
+    </script>
+</body>
+</html>

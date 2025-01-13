@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Memories - Our 7-Month Adventure</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(to bottom, #4a0e4e, #81245d);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #ff6ec7;
+            text-shadow: 0 0 5px #ff6ec7, 0 0 10px #ff6ec7, 0 0 20px #ff6ec7;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            aspect-ratio: 1;
+            background-color: #4deeea;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .card.flipped {
+            background-color: #ff6ec7;
+            transform: rotateY(180deg);
+        }
+
+        .card-content {
+            display: none;
+        }
+
+        .card.flipped .card-content {
+            display: block;
+        }
+
+        .stats {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: block;
+            width: 200px;
+            margin: 0 auto;
+            padding: 0.75rem;
+            background-color: #f000ff;
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #d700db;
+        }
+
+        .back-btn {
+            background-color: #4deeea;
+            color: #000;
+            margin-top: 1rem;
+        }
+
+        .back-btn:hover {
+            background-color: #3bbbb8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Retro Memories</h1>
+        <p>Test your memory with our custom game featuring moments from our journey.</p>
+        <div class="game-container" id="gameContainer"></div>
+        <div class="stats">Moves: <span id="moves">0</span></div>
+        <button class="btn" id="resetBtn">Reset Game</button>
+        <a href="index.html">
+            <button class="btn back-btn" id="backBtn">Back to Home</button>
+          </a>
+          
+    </div>
+
+    <script>
+        const memoryCards = [
+            { id: 1, content: '❤️' },
+            { id: 2, content: '🌟' },
+            { id: 3, content: '🎉' },
+            { id: 4, content: '🎵' },
+            { id: 5, content: '🍕' },
+            { id: 6, content: '🌈' },
+            { id: 7, content: '🚗' },
+            { id: 8, content: '🌺' },
+        ];
+
+        const gameContainer = document.getElementById('gameContainer');
+        const movesDisplay = document.getElementById('moves');
+        const resetBtn = document.getElementById('resetBtn');
+        const backBtn = document.getElementById('backBtn');
+
+        let cards = [];
+        let flippedCards = [];
+        let matchedPairs = [];
+        let moves = 0;
+        let isChecking = false;
+
+        function createCard(card) {
+            const cardElement = document.createElement('div');
+            cardElement.classList.add('card');
+            cardElement.dataset.id = card.id;
+            
+            const cardContent = document.createElement('div');
+            cardContent.classList.add('card-content');
+            cardContent.textContent = card.content;
+            
+            cardElement.appendChild(cardContent);
+            cardElement.addEventListener('click', flipCard);
+            
+            return cardElement;
+        }
+
+        function shuffleCards() {
+            return [...memoryCards, ...memoryCards]
+                .sort(() => Math.random() - 0.5)
+                .map(card => ({ ...card }));
+        }
+
+        function renderGame() {
+            gameContainer.innerHTML = '';
+            cards = shuffleCards();
+            cards.forEach(card => {
+                gameContainer.appendChild(createCard(card));
+            });
+        }
+
+        function flipCard() {
+            if (isChecking || flippedCards.length === 2 || this.classList.contains('flipped')) return;
+            
+            this.classList.add('flipped');
+            flippedCards.push(this);
+
+            if (flippedCards.length === 2) {
+                isChecking = true;
+                setTimeout(checkForMatch, 1000);
+                moves++;
+                movesDisplay.textContent = moves;
+            }
+        }
+
+        function checkForMatch() {
+            const [card1, card2] = flippedCards;
+            const isMatch = card1.dataset.id === card2.dataset.id;
+
+            if (isMatch) {
+                matchedPairs.push(card1.dataset.id);
+            } else {
+                card1.classList.remove('flipped');
+                card2.classList.remove('flipped');
+            }
+
+            flippedCards = [];
+            isChecking = false;
+
+            if (matchedPairs.length === memoryCards.length) {
+                setTimeout(() => {
+                    alert('Congratulations! You\'ve matched all the pairs!');
+                }, 500);
+            }
+        }
+
+        function resetGame() {
+            flippedCards = [];
+            matchedPairs = [];
+            moves = 0;
+            movesDisplay.textContent = moves;
+            renderGame();
+        }
+
+        resetBtn.addEventListener('click', resetGame);
+        backBtn.addEventListener('click', () => {
+            // In a real scenario, this would navigate back to the home page
+            alert('This would take you back to the home page.');
+        });
+
+        // Initial game render
+        renderGame();
+    </script>
+</body>
+</html>

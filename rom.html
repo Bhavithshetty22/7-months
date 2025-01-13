@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Passionate Moments</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #2E1C2B;
+            color: #F3D0D0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background-color: #2A0A15;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #F3D0D0;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .hero {
+            background-image: url('https://via.placeholder.com/1920x1080?text=Romantic+Night');
+            background-size: cover;
+            background-position: center;
+            padding: 10rem 2rem;
+            color: #F3D0D0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            z-index: 1;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            z-index: 1;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .moments {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .moments h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: #F5B0A3;
+        }
+
+        .moment-item {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .moment-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .moment-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .moment-caption {
+            font-size: 1.3rem;
+            color: #F5B0A3;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        /* Canvas-style note box */
+        .note-box {
+            display: none; /* Hidden by default */
+            background-color: rgba(255, 255, 255, 0.85);
+            color: #2A0A15;
+            font-size: 1.2rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 1rem;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        /* On image click, display the note with opacity transition */
+        .note-box.show {
+            display: block;
+            opacity: 1;
+        }
+
+        footer {
+            background-color: #2A0A15;
+            color: #F3D0D0;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+       
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .nav-links a {
+            color: #F0E68C;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">Our Passionate Moments</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="retro.html">Retro</a>
+            <a href="lego.html">LEGO</a>
+            <a href="cafe.html">Cafe</a>
+            <a href="harry.html">Harry potter</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Our Night Together</h1>
+            <p>Relive every moment we shared...</p>
+        </div>
+    </header>
+
+    <div class="moments">
+        <h2>Intimate Memories</h2>
+        <div class="moment-item">
+            <div>
+                <img src="./DSC00067.JPG" alt="First Kiss" onclick="showNote('kiss')">
+                <div class="moment-caption">Sensual Mark</div>
+                <div id="note-kiss" class="note-box">The marks you gave me felt so incredible, I couldn’t stop thinking about them. It was like a beautiful rush, so full of passion. I wish I could feel that every day, lost in the magic of your touch. 💋</div>
+            </div>
+            <div>
+                <img src="./DSC00215.JPG" alt="Whispers in the Dark" onclick="showNote('whisper')">
+                <div class="moment-caption">Unforgettable First Glance</div>
+                <div id="note-whisper" class="note-box">The moment I saw your body, I was completely captivated. My attraction to you grew so intense, it was like nothing I’d ever felt before. And everything that followed, your sweet moans, the way you made me feel... I crave those moments. The way you felt over me, so close, so perfect—it was pure bliss, and I can’t get enough of it🌙</div>
+            </div>
+            <div>
+                <img src="./IMG_6075.JPG" alt="Comforting Hug" onclick="showNote('hug')">
+                <div class="moment-caption">Wild Moments</div>
+                <div id="note-hug" class="note-box">You were on top of me,rubbing our bodies going crazy,breathing and then when ur hands went down every second made me feel so crazy I can't even begin to explain how it felt when you started moving your hands, each motion making me feel something , something I couldn’t quite put into words. It felt so incredible, so beyond anything I could express. Then, a few days later, when you kissed me there, my heart stopped—I was breathless, caught in that moment  It was like time froze, and all I could feel was you. I just wish you’d gone further, Cause i was really hard 🤗</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Our Passionate Moments. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showNote(memory) {
+            // Hide all notes first
+            const allNotes = document.querySelectorAll('.note-box');
+            allNotes.forEach(note => note.classList.remove('show'));
+
+            // Show the specific note for the clicked image
+            const noteToShow = document.getElementById('note-' + memory);
+            noteToShow.classList.add('show');
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+

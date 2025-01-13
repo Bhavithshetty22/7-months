@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGO Adventure - Our 7-Month Journey</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFD700;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        /* Style for the logo container */
+.logo {
+  display: inline-block;
+  text-decoration: none; /* Remove underline */
+}
+
+/* Style for the logo image */
+.logo img {
+  width: auto;        /* Maintain image aspect ratio */
+  height: 50px;       /* Adjust to your desired logo height */
+  max-width: 100%;     /* Ensure logo doesn't stretch beyond its container */
+}
+/* Container for the images */
+.imgcontainer {
+  display: flex;
+  justify-content: center; /* Center images horizontally */
+  align-items: center; /* Center images vertically */
+  
+}
+
+/* Styling for individual image divs */
+.img1, .img2 {
+  display: inline-block;
+}
+
+/* Image styling */
+.imgcontainer .img1 img {
+  width: auto;  /* Adjust width of the images */
+  height: 350px;  /* Maintain aspect ratio */
+  padding: 0;
+  margin: 0;
+ 
+  
+}
+.imgcontainer .img2 img {
+  width: auto;  /* Adjust width of the images */
+  height: 350px;  /* Maintain aspect ratio */
+  padding: 0;
+  margin: 0;
+   
+  
+}
+
+        nav {
+            background-color: #FF0000;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: #FFD700;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+
+        .hero {
+            background-color: #0000FF;
+            color: #FFD700;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .lego-builder {
+            background-color: #FFFFFF;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .lego-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .lego-brick {
+            width: 100%;
+            padding-top: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .lego-brick:hover {
+            transform: scale(1.1);
+        }
+
+        #legoCanvas {
+            border: 2px solid #333;
+            background-color: #F0F0F0;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        button {
+            background-color: #FF0000;
+            color: #FFD700;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 0 0.5rem;
+        }
+
+        button:hover {
+            background-color: #CC0000;
+        }
+
+        footer {
+            background-color: #FF0000;
+            color: #FFD700;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+           
+        }
+
+        @media (max-width: 768px)
+        {
+            .imgcontainer {
+  display: flex;
+  justify-content: center; /* Center images horizontally */
+  align-items: center; /* Center images vertically */
+  
+}
+
+/* Styling for individual image divs */
+.img1, .img2 {
+  display: inline-block;
+}
+
+/* Image styling */
+.imgcontainer .img1 img {
+  width: auto;  /* Adjust width of the images */
+  height: 200px;  /* Maintain aspect ratio */
+  padding: 0;
+  margin: 0;
+ 
+  
+}
+.imgcontainer .img2 img {
+  width: auto;  /* Adjust width of the images */
+  height: 200px;  /* Maintain aspect ratio */
+  padding: 0;
+  margin: 0;
+   
+  
+}
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="./lego.png">
+              </a>
+              
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="retro.html">Retro</a>
+                <a href="cafe.html">Cafe</a>
+                <a href="harry.html">Harry Potter</a>
+                <a href="rom.html">Romantic</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Build Our LEGO Adventure</h1>
+            <p>Create a masterpiece to celebrate our 7 months together!</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="lego-builder">
+            <h2>LEGO Note</h2>
+            <p>Every moment with you is like adding a new piece to a beautiful LEGO set. In these 7 months together, we’ve built something amazing. Each memory we make is another block in our perfect little world. I feel so lucky to have you by my side on this journey. Here’s to many more months of building, loving, and growing together. ❤️🧩
+                HAPPY 7 MONTHS MY LOVE
+            </p>
+            
+            
+           
+        </section>
+        <div class="imgcontainer">
+           <div class="img1"><img src="./male.png"></div> 
+           <div class="img2"><img src="./female.png"></div> 
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Our LEGO Journey. All rights reserved.</p>
+    </footer>
+
+   
+</body>
+</html>

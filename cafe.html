@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Cafe - Our 7-Month Journey</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F5E6D3;
+            color: #4A3728;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        nav {
+            background-color: #8B4513;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #F5E6D3;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: #F5E6D3;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+
+        .hero {
+            background-color: #D2B48C;
+            color: #4A3728;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu {
+            background-color: #FFFFFF;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 1rem;
+        }
+
+        .menu-item {
+            background-color: #F5E6D3;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-summary {
+            background-color: #D2B48C;
+            padding: 1rem;
+            margin-top: 2rem;
+            border-radius: 5px;
+        }
+
+        #orderList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #orderList li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        button {
+            background-color: #8B4513;
+            color: #F5E6D3;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: #6B3611;
+        }
+
+        footer {
+            background-color: #8B4513;
+            color: #F5E6D3;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Our Cozy Cafe</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="retro.html">Retro</a>
+                <a href="lego.html">LEGO</a>
+                <a href="harry.html">Harry Potter</a>
+                <a href="rom.html">Romantic</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Our Cozy Cafe Experience</h1>
+            <p>Relive our coffee dates and create a virtual order!</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="menu">
+            <h2>Cafe Menu</h2>
+            <div class="menu-grid">
+                <div class="menu-item" data-name="  Anectode" data-price="700">
+                    <img src="./anectode.jpeg" alt="Cappuccino">
+                    <h3>Anectode</h3>
+                    <p>Rs700</p>
+                </div>
+                <div class="menu-item" data-name="Cafe Buddy's" data-price="500">
+                    <img src="./newcafe.jpeg" alt="Latte">
+                    <h3>Cafe Buddy's</h3>
+                    <p>Rs500</p>
+                </div>
+                <div class="menu-item" data-name="Bean theory" data-price="950">
+                    <img src="./bean theory.jpeg" alt="Croissant">
+                    <h3>Bean theory</h3>
+                    <p>Rs950</p>
+                </div>
+                
+                <div class="menu-item" data-name="Mokai" data-price="600">
+                    <img src="./mokai.jpeg" alt="Cheesecake">
+                    <h3>Mokai</h3>
+                    <p>Rs600</p>
+                </div>
+                <div class="menu-item" data-name="Breeve" data-price="1050">
+                    <img src="./breeve.jpeg" alt="Cheesecake">
+                    <h3>Breeve</h3>
+                    <p>Rs1050</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="order-summary">
+            <h2>Your Order</h2>
+            <ul id="orderList"></ul>
+            <p>Total: Rs<span id="totalPrice">0.00</span></p>
+            <button id="placeOrderBtn">Place Order</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Our Cozy Cafe. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuItems = document.querySelectorAll('.menu-item');
+        const orderList = document.getElementById('orderList');
+        const totalPriceElement = document.getElementById('totalPrice');
+        const placeOrderBtn = document.getElementById('placeOrderBtn');
+        let order = [];
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const name = item.dataset.name;
+                const price = parseFloat(item.dataset.price);
+                addToOrder(name, price);
+                updateOrderDisplay();
+            });
+        });
+
+        function addToOrder(name, price) {
+            const existingItem = order.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                order.push({ name, price, quantity: 1 });
+            }
+        }
+
+        function updateOrderDisplay() {
+            orderList.innerHTML = '';
+            let total = 0;
+            order.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} x${item.quantity} - Rs${(item.price * item.quantity).toFixed(2)}`;
+                orderList.appendChild(li);
+                total += item.price * item.quantity;
+            });
+            totalPriceElement.textContent = total.toFixed(2);
+        }
+        placeOrderBtn.addEventListener('click', () => {
+            if (order.length === 0) {
+                alert('Please add items to your order first!');
+            } else {
+                alert('Thank you for your order! Enjoy your virtual coffee date!');
+                order = [];
+                updateOrderDisplay();
+            }
+        });
+    </script>
+</body>
+</html>
